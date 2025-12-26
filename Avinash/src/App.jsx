@@ -6,6 +6,9 @@ import Projects from "./pages/Projects";
 import Faqs from "./components/Faqs";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import Skills from "./components/Skills";
+import About from "./pages/About";
+import Experience from "./pages/Experience";
 
 
 const App = () => {
@@ -13,10 +16,13 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Navbar />
+        <Home />
+        <About />
         <Routes>
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Skills />} />
         </Routes>
+        <Projects />
+        <Experience />
         <Contact />
         <Faqs />
         <Footer />

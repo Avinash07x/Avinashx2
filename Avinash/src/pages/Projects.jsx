@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Github, ExternalLink, Figma, Play, ChevronDown } from "lucide-react";
-import Herop from "../components/Herop";
 
 /* IMAGES */
 import Wood1 from "../assets/woodland.png";
@@ -136,8 +135,7 @@ const Projects = () => {
 
   return (
     <>
-      <Herop />
-      <section className="py-24 bg-gray-900">
+      <section id="projects" className="py-24 bg-gray-900">
         <div className="max-w-6xl mx-auto px-5">
           <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
             Featured Projects

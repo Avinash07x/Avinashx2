@@ -27,7 +27,7 @@ const Navbar = () => {
     { name: "About", path: "#about", icon: aboutGif },
     { name: "Skills", path: "#skills", icon: skillsGif },
     { name: "Experience", path: "#experience", icon: experienceGif },
-    { name: "Projects", path: "/projects", icon: projectsGif },
+    { name: "Projects", path: "#projects", icon: projectsGif },
     { name: "Contact", path: "#contact", icon: contactGif },
   ];
 

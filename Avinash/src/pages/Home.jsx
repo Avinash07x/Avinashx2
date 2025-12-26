@@ -1,10 +1,6 @@
 import React from "react";
 import Avinash from "../assets/Avinash-2.png";
 import CV from "../assets/AVINASH_SHARMA.pdf"; // PDF inside src/assets
-import About from "./About";
-import Skills from "../components/Skills";
-import Experience from "./Experience";
-import Project from "../components/Project";
 
 const Home = () => {
   return (
@@ -54,12 +50,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* OTHER SECTIONS */}
-      <About />
-      <Skills />
-      <Project />
-      <Experience />
     </>
   );
 };
