@@ -1,6 +1,10 @@
 import React from "react";
 import Avinash from "../assets/Avinash-2.png";
-import { Link } from "react-router-dom";
+import CV from "../assets/AVINASH_SHARMA.pdf"; // PDF inside src/assets
+import About from "./About";
+import Skills from "../components/Skills";
+import Experience from "./Experience";
+import Project from "../components/Project";
 
 const Home = () => {
   return (
@@ -30,17 +34,18 @@ const Home = () => {
               development, and creating seamless user experiences.
             </p>
 
-            {/* BUTTON */}
-            <Link
-              to="/resume"
-              className="inline-block bg-purple-600 animate-glitch text-white px-6 py-3 rounded-xl text-lg font-medium shadow-lg hover:animate-none hover:bg-blue-700 transition-all duration-300"
+            {/* DOWNLOAD CV BUTTON */}
+            <a
+              href={CV} // Imported PDF
+              download="Avinash-Sharma-CV.pdf"
+              className="inline-block bg-purple-600 text-white px-6 py-3 rounded-xl text-lg font-medium shadow-lg hover:bg-blue-700 transition-all duration-300"
             >
               Download CV
-            </Link>
+            </a>
           </div>
 
           {/* RIGHT SIDE IMAGE */}
-          <div className="flex justify-center md:justify-end shadow-xl rounded-2xl overflow-hidden ">
+          <div className="flex justify-center md:justify-end shadow-xl rounded-2xl overflow-hidden">
             <img
               src={Avinash}
               alt="Avinash Sharma"
@@ -49,11 +54,19 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* OTHER SECTIONS */}
+      <About />
+      <Skills />
+      <Project />
+      <Experience />
     </>
   );
 };
 
 export default Home;
+
+
 
 // import React from "react";
 // import Avinash from "../assets/Avinash-2.png";

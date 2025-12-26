@@ -21,14 +21,14 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ FIXED: ALL items now have UNIQUE PATH
+
   const menuItems = [
     { name: "Home", path: "/", icon: homeGif },
-    { name: "About", path: "#", icon: aboutGif },
-    { name: "Skills", path: "#", icon: skillsGif },
-    { name: "Experience", path: "#", icon: experienceGif },
-    { name: "Projects", path: "#", icon: projectsGif },
-    { name: "Contact", path: "#", icon: contactGif },
+    { name: "About", path: "#about", icon: aboutGif },
+    { name: "Skills", path: "#skills", icon: skillsGif },
+    { name: "Experience", path: "#experience", icon: experienceGif },
+    { name: "Projects", path: "/projects", icon: projectsGif },
+    { name: "Contact", path: "#contact", icon: contactGif },
   ];
 
   return (
