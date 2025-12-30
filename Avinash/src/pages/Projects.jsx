@@ -2,105 +2,147 @@ import React, { useState } from "react";
 import { Github, ExternalLink, Figma, Play, ChevronDown } from "lucide-react";
 
 /* IMAGES */
-import Wood1 from "../assets/woodland.png";
+import Wood1 from "../assets/woodland1.png";
 import Todo1 from "../assets/Todo.png";
 import Weather1 from "../assets/Weather.png";
-import Unnatii1 from "../assets/Unnatii1.png";
-import DC1 from "../assets/DC.png";
-import Portfolio1 from "../assets/Portfolio.png";
+import Unnatii1 from "../assets/Unnatii5.png";
+import DC1 from "../assets/DC1.png";
+import Portfolio1 from "../assets/Portfolio4.png";
 import Calendar1 from "../assets/Calendar.png";
 import Cal1 from "../assets/Calculator.png";
+import Kaleo1 from "../assets/Kaleo.png";
+import LuxeGlow1 from "../assets/LuxeGlow.png";
+import Trend1 from "../assets/Trend.png";
+
 
 
 /* PROJECT DATA */
 const projects = [
   {
-    title: "Woodland",
+    title: "KALEO – Modern Ranch Retreat Website",
     description:
-      "Woodland Architecture Firm — A modern architecture and interior-design studio offering building design, interior styling, layout planning and project management.",
+      "Kaleo — A modern ranch retreat website showcasing luxurious accommodations, amenities, and booking options for a serene getaway.",
     tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
-    github: "https://github.com/Avinash07x/Woodland.git",
-    demo: "https://woodland-three.vercel.app/",
+    github: "https://github.com/Avinash07x/Travel.git",
+    demo: "https://kaleo-three.vercel.app/",
     info: [
-      "Client-focused architecture website",
-      "Smooth GSAP + Framer Motion animations",
-      "Fully responsive layout",
-      "SEO-friendly structure"
+      "Kaleo is a modern western ranch retreat offering quiet escapes, open landscapes, soulful experiences, and intentional living—where nature, rhythm, and meaningful gatherings invite guests to slow down and reconnect deeply."
     ],
-    image: Wood1,
+    image: Kaleo1,
     color: "from-green-400 to-blue-500",
   },
   {
-    title: "Advanced Todo-List Web App",
+    title: "LuxeGlow - Skincare E-commerce Website",
     description:
-      "Todo app with dark/light mode, CRUD, duplicate prevention, and progress tracking.",
-    tech: ["React.js", "Tailwind CSS", "Local Storage"],
-    github: "https://github.com/Avinash07x/Todo/tree/main/TODO",
-    demo: "https://todo-mu-peach.vercel.app/",
+      "LuxeGlow — A sleek e-commerce platform for premium skincare products with user-friendly navigation, Package showcases, and secure checkout.",
+    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    github: "https://github.com/Avinash07x/LuxeGlow.git",
+    demo: "https://luxe-glow-nine.vercel.app/",
     info: [
-      "CRUD functionality",
-      "Light/Dark mode toggle",
-      "Progress tracking",
-      "Local storage persistence"
+      "LuxeGlow is a luxury beauty sanctuary offering expert hair, skin, and bridal treatments. Experience rejuvenating facials, relaxing spa therapies, and personalized services designed to enhance confidence, elegance, and radiant beauty."
     ],
-    image: Todo1,
-    color: "from-blue-500 to-cyan-500",
+    image: LuxeGlow1,
+    color: "from-pink-400 to-purple-500",
   },
   {
-    title: "Real-Time Weather App",
-    description: "Responsive weather app with real-time API integration.",
-    tech: ["React.js", "Tailwind CSS", "Weather API"],
-    github: "https://github.com/Avinash07x/weather",
-    demo: "https://weather-lemon-delta.vercel.app/",
-    info: ["Real-time API integration", "Responsive design", "Error handling"],
-    image: Weather1,
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    title: "Unnatii Real Estate",
-    description: "Real estate web app with property listings & filters.",
-    tech: ["React.js", "Tailwind CSS", "React Router"],
-    github: "https://github.com/Avinash07x/Unnatii/tree/main/frontend",
-    demo: "https://unnatii.vercel.app/",
+    title: "Trend – Curated Looks for Every Occasion",
+    description:
+      "Trend — A fashion website showcasing curated looks for various occasions, featuring outfit ideas, style tips, and shopping links.",
+    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    github: "https://github.com/Avinash07x/TREND.git",
+    demo: "https://trend-flame.vercel.app/",
     info: [
-      "Property listing & filters",
-      "Responsive design",
-      "React Router navigation"
+      "Trend is an online fashion destination offering men’s and women’s apparel, from streetwear essentials to premium seasonal collections. Shop the latest trends, elevate your style, and express your unique personality effortlessly."
     ],
-    image: Unnatii1,
-    color: "from-green-500 to-emerald-500",
+    image: Trend1,
+    color: "from-yellow-400 to-red-500",
   },
-  {
-    title: "DC Keepers",
-    description: "Task management app with authentication.",
-    tech: ["React.js", "Tailwind CSS", "Axios"],
+    {
+    title: "DC Keepers – Reliable Web Hosting & Digital Solutions",
+    description: "DC Keepers — A web hosting and digital solutions platform offering reliable hosting services, domain registration, and website management tools for businesses and individuals.",
+    tech: ["React.js", "Tailwind CSS", "Firebase", "Node.js"],
     github: "https://github.com/Avinash07x/Avinash07x-Internship-Project-1.git",
     demo: "https://digitalcloud-psi.vercel.app/",
     info: [
-      "User authentication",
-      "Task CRUD operations",
-      "Responsive UI"
+      "DC Keepers delivers secure, high-performance hosting, cloud, VPS, and server solutions with expert support—helping businesses build, scale, and manage reliable digital infrastructure with confidence."
     ],
     image: DC1,
     color: "from-orange-500 to-red-500",
   },
   {
-    title: "Portfolio Website",
-    description: "Showcase of skills & projects.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion"],
+    title: "WOODLAND – Architecture & Interior Design Studio",
+    description:
+      "Woodland — A modern architecture and interior design studio website showcasing portfolio, services, and client testimonials.",
+    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    github: "https://github.com/Avinash07x/Woodland.git",
+    demo: "https://woodland-three.vercel.app/",
+    info: [
+      "Woodland is an architecture and interior design studio creating purposeful, sustainable spaces. Through integrated design, thoughtful planning, and project management, we craft environments deeply connected to people, function, and place."
+    ],
+    image: Wood1,
+    color: "from-gray-500 to-green-500",
+  },
+    {
+    title: "Unnatii – Premium Real Estate & Residential Projects",
+    description: "Unnatii — A real estate website showcasing premium residential projects, property listings, and client services.",
+    tech: ["React.js", "Tailwind CSS", "React Router"],
+    github: "https://github.com/Avinash07x/Unnatii/tree/main/frontend",
+    demo: "https://unnatii.vercel.app/",
+    info: [
+      "Unnatii is a Jaipur-based real estate company offering premium residential properties, expert consultancy, and modern amenities. They help clients invest wisely, find dream homes, and ensure seamless property transactions."
+    ],
+    image: Unnatii1,
+    color: "from-green-500 to-emerald-500",
+  },
+    {
+    title: "Personal Portfolio Website",
+    description: "Personal portfolio showcasing projects and skills.",
+    tech: ["React.js", "Tailwind CSS", "Framer Motion" ],
     github: "https://github.com/Avinash07x/Avinash.git",
     demo: "https://avinash-theta.vercel.app/",
     info: [
-      "Portfolio showcase",
-      "Project sections with animations",
-      "Responsive design"
+      "Showcases my skills, projects, and experience as a developer.",
+      "Responsive design for all devices",
+      "Interactive UI with smooth animations",
+      "Contact form for inquiries"
     ],
     image: Portfolio1,
     color: "from-indigo-500 to-purple-500",
   },
   {
-    title: "Calendar App",
-    description: "Advanced calendar with event management.",
+    title: "Responsive Weather App",
+    description: "Weather app providing real-time forecasts and conditions.",
+    tech: ["React.js", "Tailwind CSS", "Weather API"],
+    github: "https://github.com/Avinash07x/weather",
+    demo: "https://weather-lemon-delta.vercel.app/",
+    info: [
+      "Real-time weather data",
+      "Responsive design for all devices",
+      "Search by city name",
+      "5-day weather forecast"
+    ],
+    image: Weather1,
+    color: "from-purple-500 to-pink-500",
+  },
+    {
+    title: "Todo App with Progress Tracker",
+    description:
+      "Todo app featuring CRUD operations and progress tracking.",
+    tech: ["React.js", "Tailwind CSS", "Local Storage"],
+    github: "https://github.com/Avinash07x/Todo/tree/main/TODO",
+    demo: "https://todo-mu-peach.vercel.app/",
+    info: [
+      "Add, edit, delete tasks",
+      "Mark tasks as completed",
+      "Progress tracking with visual indicators",
+      "Data persistence using Local Storage"
+    ],
+    image: Todo1,
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    title: "Advanced Calendar App",
+    description: "Calendar app with event management features.",
     tech: ["React.js", "Tailwind CSS", "Date-fns"],
     github: "https://github.com/Avinash07x/Calendar.git",
     demo: "https://calendar-beta-wheat.vercel.app/",
@@ -110,18 +152,18 @@ const projects = [
       "Responsive calendar UI"
     ],
     image: Calendar1,
-    color: "from-teal-500 to-cyan-500",
+    color: "from-green-500 to-teal-500",
   },
   {
-    title: "Calculator Web App",
-    description: "Simple and responsive calculator.",
+    title: "Simple Calculator",
+    description: "Calculator app for basic arithmetic operations.",
     tech: ["React.js", "Tailwind CSS"],
     github: "https://github.com/Avinash07x/Calculator.git",
     demo: "https://calculator-blue-theta-18.vercel.app/",
     info: [
       "Basic arithmetic operations",
-      "Responsive layout",
-      "Lightweight and fast"
+      "Responsive design for all devices",
+      "Clear and intuitive UI"
     ],
     image: Cal1,
     color: "from-yellow-500 to-orange-500",
