@@ -78,17 +78,20 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="relative min-h-screen bg-gray-900 overflow-hidden">
-      {/* ✅ Background Canvas (Optional / Decorative Only Now) */}
+    <section
+      id="skills"
+      className="relative min-h-screen bg-gray-900 overflow-hidden"
+    >
+      {/* ✅ Decorative Canvas (DOES NOT BLOCK CLICKS) */}
       <canvas
         ref={canvasRef}
-        className="fixed top-0 left-0 w-full h-full z-0"
+        className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
       />
 
       {/* ✅ Content */}
       <div className="relative z-10 py-24 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-5 text-center">
-          <h2 className="text-5xl md:text-6xl font-extrabold mb-14 text-blue-600 text-transparent bg-clip-text">
+          <h2 className="text-5xl md:text-6xl font-extrabold mb-14 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
             Technical Skills
           </h2>
 
@@ -96,8 +99,8 @@ const Skills = () => {
             {categories.map((cat, idx) => (
               <div
                 key={idx}
-                className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 
-                           shadow-[0px_0px_20px_rgba(0,0,0,0.4)] 
+                className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8
+                           shadow-[0px_0px_20px_rgba(0,0,0,0.4)]
                            hover:shadow-[0px_0px_35px_rgba(80,80,255,0.5)]
                            transition-all hover:-translate-y-2 duration-300"
               >
@@ -109,10 +112,10 @@ const Skills = () => {
                   {cat.items.map((skill, index) => (
                     <div
                       key={index}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-full 
-                                 bg-gradient-to-r ${cat.color} text-white
-                                 shadow-md hover:shadow-xl 
-                                 transition-all duration-300 hover:scale-105`}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full
+                                  bg-gradient-to-r ${cat.color} text-white
+                                  shadow-md hover:shadow-xl
+                                  transition-all duration-300 hover:scale-105`}
                     >
                       <img
                         src={skill.logo}
