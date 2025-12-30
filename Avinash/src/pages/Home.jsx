@@ -1,6 +1,6 @@
 import React from "react";
 import Avinash from "../assets/Avinash-2.png";
-import CV from "../assets/AVINASH_SHARMA.pdf"; // PDF inside src/assets
+import CV from "../assets/AvinashCV.pdf"; // PDF inside src/assets
 
 const Home = () => {
   return (
