@@ -98,8 +98,8 @@ const projects = [
     title: "Personal Portfolio Website",
     description: "Personal portfolio showcasing projects and skills.",
     tech: ["React.js", "Tailwind CSS", "Framer Motion" ],
-    github: "https://github.com/Avinash07x/Avinash.git",
-    demo: "https://avinash-theta.vercel.app/",
+    github: "https://github.com/Avinash07x/Avinashx2.git",
+    demo: "https://avinashx2.vercel.app/",
     info: [
       "Showcases my skills, projects, and experience as a developer.",
       "Responsive design for all devices",
