@@ -191,99 +191,110 @@ const projects = [
   },
 ];
 
-/* COMPONENT */
 const Projects = () => {
   const [openInfo, setOpenInfo] = useState(null);
-  const [view, setView] = useState("2"); // 2 | 3 | 4 | list
+  const [view, setView] = useState("2");
 
   const iconClass = (active) =>
-    `p-2 rounded-lg border ${
+    `p-2 rounded-lg border transition ${
       active
         ? "bg-blue-500 text-white border-blue-500"
         : "bg-gray-800 text-gray-400 border-gray-700 hover:text-white"
     }`;
 
   return (
-    <section className="py-24 bg-gray-900">
-      <div className="max-w-7xl mx-auto px-5">
-        <h2 className="text-5xl font-bold text-center mb-10 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+    <section className="py-16 sm:py-24 bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        {/* TITLE */}
+        <h2 className="text-3xl sm:text-5xl font-bold text-center mb-8 sm:mb-10 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
           Featured Projects
         </h2>
 
         {/* VIEW TOGGLE */}
-        <div className="flex justify-center gap-3 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           <button onClick={() => setView("2")} className={iconClass(view === "2")}>
-            <Grid2X2 size={20} />
+            <Grid2X2 size={18} />
           </button>
           <button onClick={() => setView("3")} className={iconClass(view === "3")}>
-            <Grid3X3 size={20} />
+            <Grid3X3 size={18} />
           </button>
           <button onClick={() => setView("4")} className={iconClass(view === "4")}>
-            <LayoutGrid size={20} />
+            <LayoutGrid size={18} />
           </button>
           <button
             onClick={() => setView("list")}
             className={iconClass(view === "list")}
           >
-            <List size={20} />
+            <List size={18} />
           </button>
         </div>
 
-        {/* PROJECT GRID */}
+        {/* GRID */}
         <div
-          className={`grid gap-10 ${
+          className={`grid gap-6 sm:gap-8 ${
             view === "2"
-              ? "md:grid-cols-2"
+              ? "grid-cols-1 sm:grid-cols-2"
               : view === "3"
-              ? "md:grid-cols-3"
+              ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
               : view === "4"
-              ? "md:grid-cols-4"
+              ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
               : "grid-cols-1"
           }`}
         >
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`bg-gray-800 rounded-2xl p-6 border border-gray-700 transition ${
-                view === "list" ? "flex gap-6" : "hover:-translate-y-2"
+              className={`bg-gray-800 rounded-2xl p-4 sm:p-6 border border-gray-700 transition ${
+                view === "list"
+                  ? "flex flex-col sm:flex-row gap-5"
+                  : "hover:-translate-y-2"
               }`}
             >
+              {/* IMAGE */}
               <img
                 src={project.image}
                 alt={project.title}
-                className={`rounded-xl object-cover ${
-                  view === "list" ? "w-64 h-40" : "w-full h-56"
+                className={`rounded-xl object-cover w-full ${
+                  view === "list"
+                    ? "sm:w-64 h-44 sm:h-40"
+                    : "h-48 sm:h-56"
                 }`}
               />
 
+              {/* CONTENT */}
               <div className="flex-1">
                 <h3
-                  className={`text-xl font-bold mt-4 bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}
+                  className={`text-lg sm:text-xl font-bold mt-4 bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}
                 >
                   {project.title}
                 </h3>
 
-                <p className="text-gray-300 my-3">{project.description}</p>
+                <p className="text-gray-300 my-3 text-sm sm:text-base">
+                  {project.description}
+                </p>
 
+                {/* TECH STACK */}
                 <div className="flex flex-wrap gap-2 mb-3">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="bg-gray-700 px-3 py-1 rounded-full text-sm"
+                      className="bg-gray-700 px-3 py-1 rounded-full text-xs sm:text-sm"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
+                {/* INFO TOGGLE */}
                 <button
                   onClick={() =>
                     setOpenInfo(openInfo === index ? null : index)
                   }
-                  className="flex items-center gap-2 text-blue-400 mb-3"
+                  className="flex items-center gap-2 text-blue-400 text-sm mb-3"
                 >
                   Project Info
                   <ChevronDown
+                    size={16}
                     className={`transition ${
                       openInfo === index ? "rotate-180" : ""
                     }`}
@@ -291,29 +302,30 @@ const Projects = () => {
                 </button>
 
                 {openInfo === index && (
-                  <ul className="list-disc pl-5 text-gray-300 mb-3">
+                  <ul className="list-disc pl-5 text-gray-300 text-sm mb-3 space-y-1">
                     {project.info.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
                 )}
 
-                <div className="flex gap-4">
+                {/* LINKS */}
+                <div className="flex flex-wrap gap-4 mt-2">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 text-blue-400"
+                    className="flex items-center gap-2 text-blue-400 text-sm"
                   >
-                    <Github size={18} /> GitHub
+                    <Github size={16} /> GitHub
                   </a>
                   <a
                     href={project.demo}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 text-blue-400"
+                    className="flex items-center gap-2 text-blue-400 text-sm"
                   >
-                    <ExternalLink size={18} /> Live
+                    <ExternalLink size={16} /> Live
                   </a>
                 </div>
               </div>
@@ -326,3 +338,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

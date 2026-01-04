@@ -6,7 +6,7 @@ const Footer = () => {
   const socialLinks = [
     {
       name: "GitHub",
-      url: "https://github.com/avinash",
+      url: "https://github.com/Avinash07x",
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path
@@ -34,7 +34,7 @@ const Footer = () => {
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/avinash",
+      url: "https://www.linkedin.com/in/avinash-sharma-3104a1364/",
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037
@@ -67,7 +67,7 @@ const Footer = () => {
     },
     {
       name: "Email",
-      url: "mailto:avinash@example.com",
+      url: "mailto:itsavinash0@gmail.com",
       icon: (
         <svg
           className="w-5 h-5"

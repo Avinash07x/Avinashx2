@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Contact = () => {
   const socials = [
     { href: "mailto:itsavinash0@gmail.com", icon: Mail, bg: "from-blue-500 to-purple-600" },
-    { href: "https://www.linkedin.com/in/avinash-sharma", icon: Linkedin, bg: "from-blue-700 to-blue-400" },
+    { href: "https://www.linkedin.com/in/avinash-sharma-3104a1364/", icon: Linkedin, bg: "from-blue-700 to-blue-400" },
     { href: "https://github.com/Avinash07x", icon: Github, bg: "from-gray-800 to-gray-600" },
     { href: "https://wa.me/919664007889", icon: Whatsapp, bg: "from-green-500 to-green-400" },
   ];
@@ -45,12 +45,12 @@ const Contact = () => {
 
         {/* Call-to-Action Buttons */}
         <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
-          <a
+          <Link
             href="mailto:itsavinash0@gmail.com"
             className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
           >
             Send Email
-          </a>
+          </Link>
           <Link
             href="https://wa.me/919664007889"
             target="_blank"
