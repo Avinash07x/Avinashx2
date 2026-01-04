@@ -1,7 +1,17 @@
 import React, { useState } from "react";
-import { Github, ExternalLink, Figma, Play, ChevronDown } from "lucide-react";
+import {
+  Github,
+  ExternalLink,
+  Figma,
+  ChevronDown,
+  Grid2X2,
+  Grid3X3,
+  LayoutGrid,
+  List,
+} from "lucide-react";
 
 /* IMAGES */
+import Fitness1 from "../assets/GYM.png";
 import Wood1 from "../assets/woodland1.png";
 import Todo1 from "../assets/Todo.png";
 import Weather1 from "../assets/Weather.png";
@@ -14,10 +24,21 @@ import Kaleo1 from "../assets/Kaleo.png";
 import LuxeGlow1 from "../assets/LuxeGlow.png";
 import Trend1 from "../assets/Trend.png";
 
-
-
 /* PROJECT DATA */
 const projects = [
+  {
+    title: "Fitness Pro – Modern Gym & Fitness Website",
+    description:
+      "Fitness Pro — A modern gym and fitness website showcasing services, trainers, class schedules, and membership options.",
+    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    github: "https://github.com/Avinash07x/Fitness.git",
+    demo: "https://fitness-omega-nine.vercel.app/",
+    info: [
+      "Fitness Pro is a cutting-edge gym and fitness center offering state-of-the-art equipment, expert trainers, and diverse classes. We provide personalized training programs, nutrition guidance, and wellness services to help members achieve their health and fitness goals."
+    ],
+    image: Fitness1,
+    color: "from-red-400 to-yellow-500",
+  },
   {
     title: "KALEO – Modern Ranch Retreat Website",
     description:
@@ -173,43 +194,78 @@ const projects = [
 /* COMPONENT */
 const Projects = () => {
   const [openInfo, setOpenInfo] = useState(null);
-  const [openVideo, setOpenVideo] = useState(null);
+  const [view, setView] = useState("2"); // 2 | 3 | 4 | list
+
+  const iconClass = (active) =>
+    `p-2 rounded-lg border ${
+      active
+        ? "bg-blue-500 text-white border-blue-500"
+        : "bg-gray-800 text-gray-400 border-gray-700 hover:text-white"
+    }`;
 
   return (
-    <>
-      <section id="projects" className="py-24 bg-gray-900">
-        <div className="max-w-6xl mx-auto px-5">
-          <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-            Featured Projects
-          </h2>
+    <section className="py-24 bg-gray-900">
+      <div className="max-w-7xl mx-auto px-5">
+        <h2 className="text-5xl font-bold text-center mb-10 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+          Featured Projects
+        </h2>
 
-          <div className="grid md:grid-cols-2 gap-10">
-            {projects.map((project, index) => (
-              <div
-                key={project.title}
-                className="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:-translate-y-2 transition"
-              >
-                {/* IMAGE */}
-                <div className="relative mb-6">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-56 object-cover rounded-xl"
-                  />
-                </div>
+        {/* VIEW TOGGLE */}
+        <div className="flex justify-center gap-3 mb-10">
+          <button onClick={() => setView("2")} className={iconClass(view === "2")}>
+            <Grid2X2 size={20} />
+          </button>
+          <button onClick={() => setView("3")} className={iconClass(view === "3")}>
+            <Grid3X3 size={20} />
+          </button>
+          <button onClick={() => setView("4")} className={iconClass(view === "4")}>
+            <LayoutGrid size={20} />
+          </button>
+          <button
+            onClick={() => setView("list")}
+            className={iconClass(view === "list")}
+          >
+            <List size={20} />
+          </button>
+        </div>
 
-                {/* TITLE */}
+        {/* PROJECT GRID */}
+        <div
+          className={`grid gap-10 ${
+            view === "2"
+              ? "md:grid-cols-2"
+              : view === "3"
+              ? "md:grid-cols-3"
+              : view === "4"
+              ? "md:grid-cols-4"
+              : "grid-cols-1"
+          }`}
+        >
+          {projects.map((project, index) => (
+            <div
+              key={project.title}
+              className={`bg-gray-800 rounded-2xl p-6 border border-gray-700 transition ${
+                view === "list" ? "flex gap-6" : "hover:-translate-y-2"
+              }`}
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                className={`rounded-xl object-cover ${
+                  view === "list" ? "w-64 h-40" : "w-full h-56"
+                }`}
+              />
+
+              <div className="flex-1">
                 <h3
-                  className={`text-2xl font-bold mb-3 bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}
+                  className={`text-xl font-bold mt-4 bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}
                 >
                   {project.title}
                 </h3>
 
-                {/* DESCRIPTION */}
-                <p className="text-gray-300 mb-4">{project.description}</p>
+                <p className="text-gray-300 my-3">{project.description}</p>
 
-                {/* TECH */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-3">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
@@ -220,101 +276,52 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {/* INFO */}
-                {project.info && (
-                  <>
-                    <button
-                      onClick={() =>
-                        setOpenInfo(openInfo === index ? null : index)
-                      }
-                      className="flex items-center gap-2 text-blue-400 font-semibold mb-3"
-                    >
-                      Project Info
-                      <ChevronDown
-                        className={`transition ${openInfo === index ? "rotate-180" : ""
-                          }`}
-                      />
-                    </button>
+                <button
+                  onClick={() =>
+                    setOpenInfo(openInfo === index ? null : index)
+                  }
+                  className="flex items-center gap-2 text-blue-400 mb-3"
+                >
+                  Project Info
+                  <ChevronDown
+                    className={`transition ${
+                      openInfo === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
-                    {openInfo === index && (
-                      <ul className="list-disc pl-5 text-gray-300 mb-4 space-y-1">
-                        {project.info.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </>
+                {openInfo === index && (
+                  <ul className="list-disc pl-5 text-gray-300 mb-3">
+                    {project.info.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 )}
 
-                {/* LINKS */}
-                <div className="flex gap-4 flex-wrap mb-4">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 text-blue-400 hover:text-purple-400"
-                    >
-                      <Github size={18} /> GitHub
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 text-blue-400 hover:text-purple-400"
-                    >
-                      <ExternalLink size={18} /> Live
-                    </a>
-                  )}
-                  {project.figma && (
-                    <a
-                      href={project.figma}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-2 text-blue-400 hover:text-purple-400"
-                    >
-                      <Figma size={18} /> Figma
-                    </a>
-                  )}
+                <div className="flex gap-4">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-blue-400"
+                  >
+                    <Github size={18} /> GitHub
+                  </a>
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-blue-400"
+                  >
+                    <ExternalLink size={18} /> Live
+                  </a>
                 </div>
-
-                {/* VIDEO MODAL */}
-                {openVideo === index && project.video && (
-                  <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-                    <div className="relative w-full h-full max-w-7xl max-h-full">
-                      <button
-                        onClick={() => setOpenVideo(null)}
-                        className="absolute top-4 right-6 text-white text-3xl z-50"
-                      >
-                        ✕
-                      </button>
-
-                      {project.video.endsWith(".mp4") ? (
-                        <video
-                          src={project.video}
-                          controls
-                          autoPlay
-                          className="w-full h-full object-contain rounded-lg"
-                        />
-                      ) : (
-                        <iframe
-                          src={project.video}
-                          title={project.title}
-                          className="w-full h-full rounded-lg"
-                          allowFullScreen
-                        />
-                      )}
-                    </div>
-                  </div>
-                )}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
