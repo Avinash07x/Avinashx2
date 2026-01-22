@@ -259,7 +259,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`bg-gray-800 rounded-2xl p-4 sm:p-6 border border-gray-700 transition ${
+              className={`bg-gray-800 rounded-2xl border border-white p-4 sm:p-6 border border-gray-700 transition ${
                 view === "list" ? "flex flex-col sm:flex-row gap-5" : "hover:-translate-y-2"
               }`}
             >
@@ -267,7 +267,7 @@ const Projects = () => {
               <img
                 src={project.image}
                 alt={project.title}
-                className={`rounded-xl object-cover w-full ${
+                className={`rounded-xl border border-white object-cover w-full ${
                   view === "list" ? "sm:w-64 h-44 sm:h-40" : "h-48 sm:h-56"
                 }`}
               />
@@ -276,8 +276,8 @@ const Projects = () => {
               <div className="flex-1">
                 {/* Live Badge */}
                 {project.live && (
-                  <span className="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full mb-2">
-                    Live Now
+                  <span className="inline-block bg-green-500 mt-4 text-white text-sm font-bold font-sans px-3 py-2 rounded-full border border-white">
+                    &#9733; Live Now
                   </span>
                 )}
 
@@ -296,7 +296,7 @@ const Projects = () => {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="bg-gray-700 px-3 py-1 rounded-full text-xs sm:text-sm"
+                      className="bg-gray-700 border border-black px-3 py-1 rounded-full text-xs sm:text-sm"
                     >
                       {tech}
                     </span>
