@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Github,
   ExternalLink,
-  Figma,
   ChevronDown,
   Grid2X2,
   Grid3X3,
@@ -11,6 +10,7 @@ import {
 } from "lucide-react";
 
 /* IMAGES */
+import Job1 from "../assets/Job.png";
 import Fitness1 from "../assets/GYM.png";
 import Wood1 from "../assets/woodland1.png";
 import Todo1 from "../assets/Todo.png";
@@ -27,17 +27,19 @@ import Trend1 from "../assets/Trend.png";
 /* PROJECT DATA */
 const projects = [
   {
-    title: "Fitness Pro – Modern Gym & Fitness Website",
+    title: "Job Portal Website",
     description:
-      "Fitness Pro — A modern gym and fitness website showcasing services, trainers, class schedules, and membership options.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
-    github: "https://github.com/Avinash07x/Fitness.git",
-    demo: "https://fitness-omega-nine.vercel.app/",
+      "A comprehensive job portal website connecting job seekers with employers, featuring job listings, application tracking, and user profiles.",
+    tech: ["TypeScript", "React.js", "Tailwind CSS", "Node.js"],
+    github: "https://github.com/Avinash07x/Job-Portal.git",
+    demo: "https://job-portal-tau-indol.vercel.app/",
     info: [
-      "Fitness Pro is a cutting-edge gym and fitness center offering state-of-the-art equipment, expert trainers, and diverse classes. We provide personalized training programs, nutrition guidance, and wellness services to help members achieve their health and fitness goals."
+      "A comprehensive job portal connecting job seekers with employers.",
+      "Features job listings, application tracking, and user profiles.",
     ],
-    image: Fitness1,
-    color: "from-red-400 to-yellow-500",
+    image: Job1,
+    color: "from-indigo-500 to-purple-500",
+    live: true, // ✅ Added live status
   },
   {
     title: "KALEO – Modern Ranch Retreat Website",
@@ -78,7 +80,7 @@ const projects = [
     image: Trend1,
     color: "from-yellow-400 to-red-500",
   },
-    {
+  {
     title: "DC Keepers – Reliable Web Hosting & Digital Solutions",
     description: "DC Keepers — A web hosting and digital solutions platform offering reliable hosting services, domain registration, and website management tools for businesses and individuals.",
     tech: ["React.js", "Tailwind CSS", "Firebase", "Node.js"],
@@ -89,6 +91,19 @@ const projects = [
     ],
     image: DC1,
     color: "from-orange-500 to-red-500",
+  },
+  {
+    title: "Fitness Pro – Modern Gym & Fitness Website",
+    description:
+      "Fitness Pro — A modern gym and fitness website showcasing services, trainers, class schedules, and membership options.",
+    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    github: "https://github.com/Avinash07x/Fitness.git",
+    demo: "https://fitness-omega-nine.vercel.app/",
+    info: [
+      "Fitness Pro is a cutting-edge gym and fitness center offering state-of-the-art equipment, expert trainers, and diverse classes. We provide personalized training programs, nutrition guidance, and wellness services to help members achieve their health and fitness goals."
+    ],
+    image: Fitness1,
+    color: "from-red-400 to-yellow-500",
   },
   {
     title: "WOODLAND – Architecture & Interior Design Studio",
@@ -103,7 +118,7 @@ const projects = [
     image: Wood1,
     color: "from-gray-500 to-green-500",
   },
-    {
+  {
     title: "Unnatii – Premium Real Estate & Residential Projects",
     description: "Unnatii — A real estate website showcasing premium residential projects, property listings, and client services.",
     tech: ["React.js", "Tailwind CSS", "React Router"],
@@ -115,10 +130,10 @@ const projects = [
     image: Unnatii1,
     color: "from-green-500 to-emerald-500",
   },
-    {
+  {
     title: "Personal Portfolio Website",
     description: "Personal portfolio showcasing projects and skills.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion" ],
+    tech: ["React.js", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/Avinash07x/Avinashx2.git",
     demo: "https://avinashx2.vercel.app/",
     info: [
@@ -145,7 +160,7 @@ const projects = [
     image: Weather1,
     color: "from-purple-500 to-pink-500",
   },
-    {
+  {
     title: "Todo App with Progress Tracker",
     description:
       "Todo app featuring CRUD operations and progress tracking.",
@@ -245,9 +260,7 @@ const Projects = () => {
             <div
               key={project.title}
               className={`bg-gray-800 rounded-2xl p-4 sm:p-6 border border-gray-700 transition ${
-                view === "list"
-                  ? "flex flex-col sm:flex-row gap-5"
-                  : "hover:-translate-y-2"
+                view === "list" ? "flex flex-col sm:flex-row gap-5" : "hover:-translate-y-2"
               }`}
             >
               {/* IMAGE */}
@@ -255,14 +268,19 @@ const Projects = () => {
                 src={project.image}
                 alt={project.title}
                 className={`rounded-xl object-cover w-full ${
-                  view === "list"
-                    ? "sm:w-64 h-44 sm:h-40"
-                    : "h-48 sm:h-56"
+                  view === "list" ? "sm:w-64 h-44 sm:h-40" : "h-48 sm:h-56"
                 }`}
               />
 
               {/* CONTENT */}
               <div className="flex-1">
+                {/* Live Badge */}
+                {project.live && (
+                  <span className="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full mb-2">
+                    Live Now
+                  </span>
+                )}
+
                 <h3
                   className={`text-lg sm:text-xl font-bold mt-4 bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}
                 >
@@ -295,9 +313,7 @@ const Projects = () => {
                   Project Info
                   <ChevronDown
                     size={16}
-                    className={`transition ${
-                      openInfo === index ? "rotate-180" : ""
-                    }`}
+                    className={`transition ${openInfo === index ? "rotate-180" : ""}`}
                   />
                 </button>
 
@@ -338,4 +354,3 @@ const Projects = () => {
 };
 
 export default Projects;
-

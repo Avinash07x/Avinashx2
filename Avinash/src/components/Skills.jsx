@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import htmlLogo from "../assets/html.png";
 import cssLogo from "../assets/css.png";
 import jsLogo from "../assets/javascript.png";
+import tsLogo from "../assets/typescript.png"; // ✅ TypeScript logo
 import reactLogo from "../assets/react.png";
 import reduxLogo from "../assets/redux.png";
 import bootstrapLogo from "../assets/bootstrap.png";
@@ -33,6 +34,7 @@ const Skills = () => {
       { name: "HTML5", logo: htmlLogo },
       { name: "CSS3", logo: cssLogo },
       { name: "JavaScript", logo: jsLogo },
+      { name: "TypeScript", logo: tsLogo, learning: true }, // ✅ Added TypeScript with learning badge
       { name: "React.js", logo: reactLogo },
       { name: "Redux", logo: reduxLogo },
       { name: "Bootstrap", logo: bootstrapLogo },
@@ -112,7 +114,7 @@ const Skills = () => {
                   {cat.items.map((skill, index) => (
                     <div
                       key={index}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-full
+                      className={`relative flex items-center gap-2 px-4 py-2 rounded-full
                                   bg-gradient-to-r ${cat.color} text-white
                                   shadow-md hover:shadow-xl
                                   transition-all duration-300 hover:scale-105`}
@@ -123,6 +125,13 @@ const Skills = () => {
                         className="w-5 h-5 object-contain"
                       />
                       <span className="font-medium">{skill.name}</span>
+
+                      {/* ✅ Learning Badge */}
+                      {skill.learning && (
+                        <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs px-2 py-0.5 rounded-full font-semibold animate-pulse">
+                          Learning
+                        </span>
+                      )}
                     </div>
                   ))}
                 </div>
