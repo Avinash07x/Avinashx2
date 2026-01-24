@@ -11,6 +11,8 @@ import {
 
 /* IMAGES */
 import Job1 from "../assets/Job.png";
+import Chat1 from "../assets/Chat1.png";
+import Emhost1 from "../assets/Emhost1.png";
 import Fitness1 from "../assets/GYM.png";
 import Wood1 from "../assets/woodland1.png";
 import Todo1 from "../assets/Todo.png";
@@ -42,10 +44,38 @@ const projects = [
     live: true, // ✅ Added live status
   },
   {
+    title: "Real Time Chat Application",
+    description:
+      "A real-time chat application enabling users to communicate instantly through text messages, with support for multiple chat rooms and user authentication.",
+    tech: ["TypeScript","React.js", "Tailwind CSS", "Firebase"],
+    github: "https://github.com/Avinash07x/Real-Time-chat-.git",
+    demo: "https://real-time-chat-hazel-nine.vercel.app/",
+    info: [
+      "A real-time chat application enabling users to communicate instantly.",
+      "Supports multiple chat rooms and user authentication.",
+    ],
+    image: Chat1,
+    color: "from-indigo-500 to-purple-500",
+    live: true, // ✅ Added live status
+  },
+  {
+    title: "Esteemhost – Web Hosting & Domain Services",
+    description: "Esteemhost — A web hosting and domain services platform offering reliable hosting solutions, domain registration, and website management tools for businesses and individuals.",
+    tech: ["JavaScript","React.js", "Tailwind CSS", "Firebase", "Node.js"],
+    github: "https://github.com/Avinash07x/Project-Internship-2.git",
+    demo: "https://esteemhost-host.vercel.app/",
+    info: [
+      "Esteemhost is a web hosting and domain services platform offering reliable hosting solutions, domain registration, and website management tools.",
+    ],
+    image: Emhost1,
+    color: "from-blue-500 to-indigo-500",
+    live: true, // ✅ Added live status
+  },
+  {
     title: "KALEO – Modern Ranch Retreat Website",
     description:
       "Kaleo — A modern ranch retreat website showcasing luxurious accommodations, amenities, and booking options for a serene getaway.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    tech: ["JavaScript", "React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
     github: "https://github.com/Avinash07x/Travel.git",
     demo: "https://kaleo-three.vercel.app/",
     info: [
@@ -58,7 +88,7 @@ const projects = [
     title: "LuxeGlow - Skincare E-commerce Website",
     description:
       "LuxeGlow — A sleek e-commerce platform for premium skincare products with user-friendly navigation, Package showcases, and secure checkout.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    tech: ["JavaScript","React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
     github: "https://github.com/Avinash07x/LuxeGlow.git",
     demo: "https://luxe-glow-nine.vercel.app/",
     info: [
@@ -71,7 +101,7 @@ const projects = [
     title: "Trend – Curated Looks for Every Occasion",
     description:
       "Trend — A fashion website showcasing curated looks for various occasions, featuring outfit ideas, style tips, and shopping links.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    tech: ["JavaScript","React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
     github: "https://github.com/Avinash07x/TREND.git",
     demo: "https://trend-flame.vercel.app/",
     info: [
@@ -83,7 +113,7 @@ const projects = [
   {
     title: "DC Keepers – Reliable Web Hosting & Digital Solutions",
     description: "DC Keepers — A web hosting and digital solutions platform offering reliable hosting services, domain registration, and website management tools for businesses and individuals.",
-    tech: ["React.js", "Tailwind CSS", "Firebase", "Node.js"],
+    tech: ["JavaScript", "React.js", "Tailwind CSS", "Firebase", "Node.js"],
     github: "https://github.com/Avinash07x/Avinash07x-Internship-Project-1.git",
     demo: "https://digitalcloud-psi.vercel.app/",
     info: [
@@ -96,7 +126,7 @@ const projects = [
     title: "Fitness Pro – Modern Gym & Fitness Website",
     description:
       "Fitness Pro — A modern gym and fitness website showcasing services, trainers, class schedules, and membership options.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    tech: ['JavaScript',"React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
     github: "https://github.com/Avinash07x/Fitness.git",
     demo: "https://fitness-omega-nine.vercel.app/",
     info: [
@@ -109,7 +139,7 @@ const projects = [
     title: "WOODLAND – Architecture & Interior Design Studio",
     description:
       "Woodland — A modern architecture and interior design studio website showcasing portfolio, services, and client testimonials.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
+    tech: ["JavaScript","React.js", "Tailwind CSS", "Framer Motion", "GSAP"],
     github: "https://github.com/Avinash07x/Woodland.git",
     demo: "https://woodland-three.vercel.app/",
     info: [
@@ -121,7 +151,7 @@ const projects = [
   {
     title: "Unnatii – Premium Real Estate & Residential Projects",
     description: "Unnatii — A real estate website showcasing premium residential projects, property listings, and client services.",
-    tech: ["React.js", "Tailwind CSS", "React Router"],
+    tech: ["JavaScript", "React.js", "Tailwind CSS", "React Router"],
     github: "https://github.com/Avinash07x/Unnatii/tree/main/frontend",
     demo: "https://unnatii.vercel.app/",
     info: [
@@ -133,7 +163,7 @@ const projects = [
   {
     title: "Personal Portfolio Website",
     description: "Personal portfolio showcasing projects and skills.",
-    tech: ["React.js", "Tailwind CSS", "Framer Motion"],
+    tech: ["JavaScript", "React.js", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/Avinash07x/Avinashx2.git",
     demo: "https://avinashx2.vercel.app/",
     info: [
@@ -148,7 +178,7 @@ const projects = [
   {
     title: "Responsive Weather App",
     description: "Weather app providing real-time forecasts and conditions.",
-    tech: ["React.js", "Tailwind CSS", "Weather API"],
+    tech: ["JavaScript", "React.js", "Tailwind CSS", "Weather API"],
     github: "https://github.com/Avinash07x/weather",
     demo: "https://weather-lemon-delta.vercel.app/",
     info: [
@@ -164,7 +194,7 @@ const projects = [
     title: "Todo App with Progress Tracker",
     description:
       "Todo app featuring CRUD operations and progress tracking.",
-    tech: ["React.js", "Tailwind CSS", "Local Storage"],
+    tech: ["JavaScript", "React.js", "Tailwind CSS", "Local Storage"],
     github: "https://github.com/Avinash07x/Todo/tree/main/TODO",
     demo: "https://todo-mu-peach.vercel.app/",
     info: [
@@ -179,7 +209,7 @@ const projects = [
   {
     title: "Advanced Calendar App",
     description: "Calendar app with event management features.",
-    tech: ["React.js", "Tailwind CSS", "Date-fns"],
+    tech: ['JavaScript',"React.js", "Tailwind CSS", "Date-fns"],
     github: "https://github.com/Avinash07x/Calendar.git",
     demo: "https://calendar-beta-wheat.vercel.app/",
     info: [
@@ -193,7 +223,7 @@ const projects = [
   {
     title: "Simple Calculator",
     description: "Calculator app for basic arithmetic operations.",
-    tech: ["React.js", "Tailwind CSS"],
+    tech: ["JavaScript","React.js", "Tailwind CSS"],
     github: "https://github.com/Avinash07x/Calculator.git",
     demo: "https://calculator-blue-theta-18.vercel.app/",
     info: [
