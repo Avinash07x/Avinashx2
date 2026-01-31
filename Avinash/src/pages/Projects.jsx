@@ -25,6 +25,7 @@ import Cal1 from "../assets/Calculator.png";
 import Kaleo1 from "../assets/Kaleo.png";
 import LuxeGlow1 from "../assets/LuxeGlow.png";
 import Trend1 from "../assets/Trend.png";
+import Financial1 from "../assets/Financial.png";
 
 /* PROJECT DATA */
 const projects = [
@@ -219,6 +220,20 @@ const projects = [
     ],
     image: Calendar1,
     color: "from-green-500 to-teal-500",
+  },
+  {
+    title: "Financial Calculator App",
+    description: "Calculator app for financial calculations and analysis.",
+    tech: ["JavaScript","React.js", "Tailwind CSS"],
+    github: "https://github.com/Avinash07x/Financial-Calculator-Suite.git",
+    demo: "https://financial-calculator-suite-six.vercel.app/",
+    info: [
+      "Financial calculations (loan, investment, retirement)",
+      "User-friendly interface",
+      "Responsive design for all devices"
+    ],
+    image: Financial1,
+    color: "from-purple-500 to-pink-500",
   },
   {
     title: "Simple Calculator",
