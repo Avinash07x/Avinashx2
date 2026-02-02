@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^12.29.2",
     "gsap": "^3.14.1",
     "locomotive-scroll": "^4.1.4",
     "lucide-react": "^0.556.0",

@@ -7,13 +7,13 @@ const experiences = [
   {
     role: "Full Stack Developer Intern",
     company: "Site Worx Infotech",
-    period: "Feb 2025 - Jul 2025",
+    period: "Feb 2025 – Jul 2025",
     responsibilities: [
-      'Led a team of interns in the end-to-end development of "Digital Cloud Keepers"',
-      "Built responsive frontend using React.js and Tailwind CSS",
-      "Developed backend functionalities with Node.js and integrated live chat support",
-      "Oversaw task distribution, team coordination, and quality assurance",
-      "Implemented modern development standards and best practices",
+      'Worked on the end-to-end development of the project "Digital Cloud Keepers"',
+      "Designed and developed responsive, user-friendly interfaces using React.js and Tailwind CSS",
+      "Integrated frontend components with backend APIs built using Node.js and Express.js",
+      "Implemented features such as authentication, live chat support, and dynamic dashboards",
+      "Collaborated with team members, followed best coding practices, and ensured clean, maintainable code",
     ],
   },
 ];
@@ -38,7 +38,9 @@ const Experience = () => {
                 <div className="flex items-center space-x-4">
                   <Briefcase className="w-8 h-8 text-blue-500" />
                   <div className="text-left">
-                    <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
+                    <h3 className="text-2xl font-bold text-white">
+                      {exp.role}
+                    </h3>
                     <p className="text-gray-400">{exp.company}</p>
                   </div>
                 </div>
@@ -46,6 +48,7 @@ const Experience = () => {
                   {exp.period}
                 </span>
               </div>
+
               <ul className="space-y-3 text-gray-300 pl-4">
                 {exp.responsibilities.map((item, index) => (
                   <li key={index} className="flex items-start space-x-3">
@@ -60,8 +63,9 @@ const Experience = () => {
 
         {/* Certificates Section */}
         <h2 className="text-4xl md:text-5xl font-bold gradient-text mt-20 mb-10">
-          Certificate
+          Certificates
         </h2>
+
         <div className="flex flex-wrap justify-center gap-12">
           {[certificate1, certificate2].map((cert, index) => (
             <div
