@@ -37,7 +37,7 @@ const About = () => {
   }, [startCount]);
 
   return (
-    <section id="about" className="py-20 bg-gray-900 relative">
+    <section id="about" className="py-20 bg-gray-900 relative ">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
 
         {/* 🔹 LEFT CONTENT */}

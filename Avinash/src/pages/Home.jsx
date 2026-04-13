@@ -37,11 +37,20 @@ const Home = ({ name, role, description }) => {
           <motion.a
             href={CV}
             download="Avinash-Sharma-CV.pdf"
-            whileHover={{ scale: 1.95 }}
-            whileTap={{ scale: 1.35 }}
-            className="inline-block bg-purple-600 text-white px-6 py-3 rounded-xl text-lg font-medium shadow-lg hover:bg-blue-700 transition"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block cursor-pointer bg-gradient-to-b from-indigo-500 to-indigo-600 
+      shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl 
+      border border-slate-500 text-white font-medium group overflow-hidden"
           >
-            Download CV
+            <div className="relative h-6 overflow-hidden">
+              <p className="transition-transform duration-500 group-hover:-translate-y-6">
+                Download CV
+              </p>
+              <p className="absolute left-0 top-6 transition-all duration-500 group-hover:top-0">
+                Download CV
+              </p>
+            </div>
           </motion.a>
         </motion.div>
 
