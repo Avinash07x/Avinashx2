@@ -15,7 +15,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setNavBackground(window.scrollY > 100);
+      setNavBackground(window.scrollY > 80);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -32,19 +32,27 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        navBackground
-          ? "bg-white/20 backdrop-blur-xl border border-white/30 shadow-lg"
-          : "bg-white/10 backdrop-blur-md border border-white/20"
-      }`}
+      className="fixed top-0 w-full z-50 transition-all duration-500"
+      style={{
+        background: navBackground
+          ? "rgba(255,255,255,0.7)"
+          : "rgba(216, 185, 185, 0.7)",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
+        borderBottom: "1px solid rgba(255,255,255,0.2)",
+        boxShadow: navBackground
+          ? "0 8px 30px rgba(0,0,0,0.2)"
+          : "none",
+      }}
     >
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center py-3 relative">
+
         {/* LOGO */}
         <HashLink smooth to="/#" className="flex items-center z-50">
           <img
             src={logo}
             alt="Logo"
-            className="h-10 w-10 md:h-12 md:w-12 rounded-full border-2 border-cyan-400 animate-pulse hover:animate-none shadow-2xl shadow-cyan-500/50"
+            className="h-10 w-10 md:h-12 md:w-12 rounded-full border-2 border-cyan-400 animate-pulse hover:animate-none shadow-xl"
           />
         </HashLink>
 
@@ -55,12 +63,14 @@ const Navbar = () => {
               <HashLink
                 smooth
                 to={item.path}
-                className="flex items-center justify-center w-20 h-12 px-2 py-2 rounded-lg transition-all duration-300 relative"
+                className="flex items-center justify-center w-20 h-12 rounded-lg transition-all duration-300"
               >
-                <span className="absolute opacity-0 group-hover:opacity-100 text-purple-400 font-medium text-sm -translate-y-6 group-hover:translate-y-0 transition-all duration-300">
+                {/* TEXT ON HOVER */}
+                <span className="absolute opacity-0 group-hover:opacity-100 text-purple-900 font-bold text-sm -translate-y-6 group-hover:translate-y-0 transition-all duration-300">
                   {item.name}
                 </span>
 
+                {/* ICON */}
                 <img
                   src={item.icon}
                   alt={item.name}
@@ -77,29 +87,25 @@ const Navbar = () => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <div
-            className={`w-6 h-0.5 bg-white mb-1.5 transition-transform ${
-              mobileMenuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
+            className={`w-6 h-0.5 bg-white mb-1.5 transition-transform ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
           />
           <div
-            className={`w-6 h-0.5 bg-white mb-1.5 transition-opacity ${
-              mobileMenuOpen ? "opacity-0" : ""
-            }`}
+            className={`w-6 h-0.5 bg-white mb-1.5 transition-opacity ${mobileMenuOpen ? "opacity-0" : ""
+              }`}
           />
           <div
-            className={`w-6 h-0.5 bg-white transition-transform ${
-              mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
+            className={`w-6 h-0.5 bg-white transition-transform ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
           />
         </button>
 
         {/* MOBILE MENU */}
         <div
-          className={`absolute top-full left-0 w-full bg-gray-900 border-b border-gray-700 shadow-xl md:hidden transition-all duration-300 ${
-            mobileMenuOpen
+          className={`absolute top-full left-0 w-full bg-gray-900/95 backdrop-blur-lg border-b border-gray-700 shadow-xl md:hidden transition-all duration-300 ${mobileMenuOpen
               ? "opacity-100 visible translate-y-0"
               : "opacity-0 invisible -translate-y-4"
-          }`}
+            }`}
         >
           <ul className="flex flex-col p-6 space-y-3">
             {menuItems.map((item) => (
@@ -117,6 +123,7 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
+
       </div>
     </nav>
   );
@@ -188,7 +195,7 @@ export default Navbar;
 //               >
 //                 {/* Hover Text */}
 //                 <span
-//                   className="absolute opacity-0 group-hover:opacity-100 text-purple-400 font-medium text-sm 
+//                   className="absolute opacity-0 group-hover:opacity-100 text-purple-400 font-medium text-sm
 //                   -translate-y-6 group-hover:translate-y-0 transition-all duration-300 group-hover:animate-glitch"
 //                 >
 //                   {item.name}
@@ -241,7 +248,7 @@ export default Navbar;
 //                 <Link
 //                   to={item.path}
 //                   onClick={() => setMobileMenuOpen(false)}
-//                   className="flex items-center gap-4 px-4 py-3 text-white font-medium rounded-lg 
+//                   className="flex items-center gap-4 px-4 py-3 text-white font-medium rounded-lg
 //                   hover:bg-gray-800 transition-all duration-300"
 //                 >
 //                   <img src={item.icon} alt={item.name} className="w-7 h-7" />
