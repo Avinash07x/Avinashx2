@@ -1,13 +1,6 @@
 import React, { useState } from "react";
-import {
-  Github,
-  ExternalLink,
-  ChevronDown,
-  Grid2X2,
-  Grid3X3,
-  LayoutGrid,
-  List,
-} from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Github, ExternalLink, ChevronDown, Building2, Code2, Rocket, Layers3 } from "lucide-react";
 
 /* IMAGES */
 import Job1 from "../assets/Job.png";
@@ -251,148 +244,232 @@ const projects = [
   },
 ];
 
-const Projects = () => {
-  const [openInfo, setOpenInfo] = useState(null);
-  const [view, setView] = useState("2");
 
-  const iconClass = (active) =>
-    `p-2 rounded-lg border transition ${
-      active
-        ? "bg-blue-500 text-white border-blue-500"
-        : "bg-gray-800 text-gray-400 border-gray-700 hover:text-white"
-    }`;
+
+const resumeProjects = [
+  {
+    title: "NirmanX",
+    subtitle: "Construction Management & Workforce ERP Platform",
+    tech: ["React.js", "Node.js", "Express.js", "PostgreSQL", "Sequelize", "JWT", "Socket.IO", "Razorpay", "Electron"],
+    description:
+      "A full-stack ERP for project management, workforce, GPS attendance, inventory, procurement, payroll and accounting with multi-role authentication, real-time workflows and reporting.",
+    accent: "ERP",
+  },
+  {
+    title: "GetViralNews",
+    subtitle: "Multi-Tenant News Publishing SaaS",
+    tech: ["React.js", "Node.js", "Express.js", "PostgreSQL", "JWT", "PWA"],
+    description:
+      "A scalable multi-tenant publishing SaaS with Super Admin and Tenant Admin systems, permission-controlled modules, dynamic branding, E-Paper, subscriptions and optimized frontend delivery.",
+    accent: "SaaS",
+  },
+  {
+    title: "Indeora Voyages",
+    subtitle: "Travel CMS & Booking Website",
+    tech: ["React.js", "Vite", "Tailwind CSS", "Framer Motion", "Node.js", "Express.js", "PostgreSQL", "JWT", "Multer"],
+    description:
+      "A CMS-driven travel platform for destinations, yoga retreats, blogs, itineraries, FAQs and quotation requests with reusable responsive sections, dynamic media and Admin/Superadmin controls.",
+    accent: "CMS",
+  },
+  {
+    title: "DocOrbit",
+    subtitle: "Healthcare Management & Super Admin Platform",
+    tech: ["React.js", "Vite", "Tailwind CSS", "Recharts", "jsPDF", "REST APIs", "Java Backend"],
+    description:
+      "A healthcare frontend integrated with Java backend APIs for clinics, doctors, patients, appointments, subscriptions and employees with protected modules, reporting and responsive dashboards.",
+    accent: "Health",
+  },
+  {
+    title: "Uddan",
+    subtitle: "Corporate Website & Content Management Platform",
+    tech: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL", "JWT", "Multer", "GSAP", "Lenis"],
+    description:
+      "A full-stack corporate website with secure Admin CMS for services, projects, blogs, careers, FAQs and testimonials, including uploads, recruitment workflows and responsive motion.",
+    accent: "CMS",
+  },
+  {
+    title: "Uddan Pro Extractor",
+    subtitle: "Google Maps Lead Extraction & Licensing Desktop App",
+    tech: ["React.js", "Vite", "Electron", "Electron Builder", "NSIS", "Recharts", "SheetJS", "jsPDF"],
+    description:
+      "A Windows desktop application for extracting and managing Google Maps business leads with filtering, analytics, duplicate detection, Excel/PDF export and machine-bound licensing.",
+    accent: "Desktop",
+  },
+];
+
+
+const Projects = () => {
+  const reduceMotion = useReducedMotion();
+  const [openInfo, setOpenInfo] = useState(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleProjects = showAll ? projects : projects.slice(0, 6);
 
   return (
-    <section id="projects" className="py-16 sm:py-24 bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        {/* TITLE */}
-        <h2 className="text-3xl sm:text-5xl font-bold text-center mb-8 sm:mb-10 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-          Featured Projects
-        </h2>
+    <section id="projects" className="bg-white px-4 py-20 text-[#303030] sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+        >
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[.18em] text-[#168BD2]">
+              <span className="h-px w-8 bg-[#45B7FF]" />
+              Featured Projects
+            </div>
+            <h2 className="mt-5 text-[clamp(2.7rem,5vw,5.5rem)] font-black leading-[.94] tracking-[-.055em]">
+              Production work first.
+              <span className="block text-[#45B7FF]">Portfolio work preserved.</span>
+            </h2>
+          </div>
+          <p className="max-w-xl text-sm leading-6 text-[#6B7280] sm:text-base">
+            Resume projects highlight real SaaS, ERP, CMS, healthcare and desktop-product experience.
+            Below them, all existing portfolio projects remain available.
+          </p>
+        </motion.div>
 
-        {/* VIEW TOGGLE */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
-          <button onClick={() => setView("2")} className={iconClass(view === "2")}>
-            <Grid2X2 size={18} />
-          </button>
-          <button onClick={() => setView("3")} className={iconClass(view === "3")}>
-            <Grid3X3 size={18} />
-          </button>
-          <button onClick={() => setView("4")} className={iconClass(view === "4")}>
-            <LayoutGrid size={18} />
-          </button>
-          <button
-            onClick={() => setView("list")}
-            className={iconClass(view === "list")}
-          >
-            <List size={18} />
-          </button>
+        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          {resumeProjects.map((project, index) => (
+            <motion.article
+              key={project.title}
+              initial={reduceMotion ? false : { opacity: 0, y: 26, scale: 0.985 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55, delay: index * 0.045 }}
+              className="project-feature-card group relative overflow-hidden rounded-[28px] border border-black/8 bg-[#111111] p-6 text-white shadow-[0_20px_60px_rgba(0,0,0,.13)] sm:p-7"
+            >
+              <div className="project-card-spotlight pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100" />
+              <div className="relative">
+                <div className="flex items-start justify-between gap-4">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/[0.06] text-[#7CCBFF]">
+                    {index % 3 === 0 ? <Building2 size={21}/> : index % 3 === 1 ? <Layers3 size={21}/> : <Rocket size={21}/>}
+                  </span>
+                  <span className="rounded-full border border-[#45B7FF]/25 bg-[#45B7FF]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[.12em] text-[#7CCBFF]">
+                    {project.accent}
+                  </span>
+                </div>
+
+                <h3 className="mt-8 text-3xl font-black tracking-[-.035em]">{project.title}</h3>
+                <p className="mt-1 text-sm font-bold text-[#7CCBFF]">{project.subtitle}</p>
+                <p className="mt-4 text-sm leading-6 text-[#AEB4BE]">{project.description}</p>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-[11px] font-bold text-[#D1D5DB]">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
+          ))}
         </div>
 
-        {/* GRID */}
-        <div
-          className={`grid gap-6 sm:gap-8 ${
-            view === "2"
-              ? "grid-cols-1 sm:grid-cols-2"
-              : view === "3"
-              ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-              : view === "4"
-              ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-              : "grid-cols-1"
-          }`}
-        >
-          {projects.map((project, index) => (
-            <div
+        <div className="mt-20 flex items-end justify-between gap-5 border-t border-black/8 pt-10">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[.16em] text-[#168BD2]">More work</p>
+            <h3 className="mt-2 text-3xl font-black tracking-[-.03em]">Original portfolio projects</h3>
+          </div>
+          <span className="hidden text-sm font-bold text-[#9CA3AF] sm:block">{projects.length} projects</span>
+        </div>
+
+        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {visibleProjects.map((project, index) => (
+            <motion.article
               key={project.title}
-              className={`bg-gray-800 rounded-2xl border border-white p-4 sm:p-6 border border-gray-700 transition ${
-                view === "list" ? "flex flex-col sm:flex-row gap-5" : "hover:-translate-y-2"
-              }`}
+              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{ duration: 0.5, delay: (index % 6) * 0.04 }}
+              className="group overflow-hidden rounded-[26px] border border-black/8 bg-[#F9FAFB] transition duration-300 hover:-translate-y-1.5 hover:border-[#45B7FF]/35 hover:bg-white hover:shadow-[0_18px_50px_rgba(0,0,0,.09)]"
             >
-              {/* IMAGE */}
-              <img
-                src={project.image}
-                alt={project.title}
-                className={`rounded-xl border border-white object-cover w-full ${
-                  view === "list" ? "sm:w-64 h-44 sm:h-40" : "h-48 sm:h-56"
-                }`}
-              />
+              <div className="relative aspect-[16/10] overflow-hidden bg-[#E5E7EB]">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.045]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-65" />
+                <div className="absolute bottom-3 left-3 flex gap-2">
+                  {project.live ? (
+                    <span className="rounded-full bg-white px-2.5 py-1 text-[9px] font-black uppercase tracking-[.1em] text-[#303030]">
+                      Live
+                    </span>
+                  ) : null}
+                </div>
+              </div>
 
-              {/* CONTENT */}
-              <div className="flex-1">
-                {/* Live Badge */}
-                {project.live && (
-                  <span className="inline-block bg-green-500 mt-4 text-white text-sm font-bold font-sans px-3 py-2 rounded-full border border-white">
-                    &#9733; Live Now
-                  </span>
-                )}
+              <div className="p-5">
+                <h4 className="text-xl font-black leading-6 tracking-[-.025em]">{project.title}</h4>
+                <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#6B7280]">{project.description}</p>
 
-                <h3
-                  className={`text-lg sm:text-xl font-bold mt-4 bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}
-                >
-                  {project.title}
-                </h3>
-
-                <p className="text-gray-300 my-3 text-sm sm:text-base">
-                  {project.description}
-                </p>
-
-                {/* TECH STACK */}
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="bg-gray-700 border border-black px-3 py-1 rounded-full text-xs sm:text-sm"
-                    >
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {project.tech.slice(0, 5).map((tech) => (
+                    <span key={tech} className="rounded-full border border-black/8 bg-white px-2.5 py-1 text-[10px] font-bold text-[#6B7280]">
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* INFO TOGGLE */}
-                <button
-                  onClick={() =>
-                    setOpenInfo(openInfo === index ? null : index)
-                  }
-                  className="flex items-center gap-2 text-blue-400 text-sm mb-3"
-                >
-                  Project Info
-                  <ChevronDown
-                    size={16}
-                    className={`transition ${openInfo === index ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                {openInfo === index && (
-                  <ul className="list-disc pl-5 text-gray-300 text-sm mb-3 space-y-1">
-                    {project.info.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                )}
-
-                {/* LINKS */}
-                <div className="flex flex-wrap gap-4 mt-2">
+                <div className="mt-5 flex items-center gap-2 border-t border-black/8 pt-4">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 text-blue-400 text-sm"
+                    className="inline-flex h-10 items-center gap-2 rounded-full border border-black/10 px-3.5 text-xs font-black transition hover:border-[#45B7FF] hover:text-[#168BD2]"
                   >
-                    <Github size={16} /> GitHub
+                    <Github size={15}/> Code
                   </a>
                   <a
                     href={project.demo}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 text-blue-400 text-sm"
+                    className="inline-flex h-10 items-center gap-2 rounded-full bg-[#303030] px-3.5 text-xs font-black text-white transition hover:bg-[#45B7FF]"
                   >
-                    <ExternalLink size={16} /> Live
+                    <ExternalLink size={15}/> Live
                   </a>
+                  <button
+                    type="button"
+                    onClick={() => setOpenInfo(openInfo === index ? null : index)}
+                    className="ml-auto grid h-10 w-10 place-items-center rounded-full border border-black/10 text-[#6B7280] transition hover:border-[#45B7FF] hover:text-[#168BD2]"
+                    aria-label={`More about ${project.title}`}
+                  >
+                    <ChevronDown size={17} className={`transition ${openInfo === index ? "rotate-180" : ""}`} />
+                  </button>
+                </div>
+
+                <div className={`grid transition-[grid-template-rows,opacity] duration-300 ${openInfo === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                  <div className="overflow-hidden">
+                    <ul className="mt-4 space-y-2 rounded-2xl bg-white p-4 text-xs leading-5 text-[#6B7280]">
+                      {project.info.map((item) => (
+                        <li key={item} className="flex gap-2">
+                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#45B7FF]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.article>
           ))}
         </div>
+
+        {projects.length > 6 ? (
+          <div className="mt-9 text-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((value) => !value)}
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-[#303030] px-5 text-sm font-black transition hover:border-[#45B7FF] hover:text-[#168BD2]"
+            >
+              {showAll ? "Show fewer projects" : `View all ${projects.length} projects`}
+              <ChevronDown size={16} className={`transition ${showAll ? "rotate-180" : ""}`} />
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

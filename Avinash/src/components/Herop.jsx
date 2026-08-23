@@ -1,199 +1,109 @@
-import React, { useState, useEffect } from 'react';
-import hero1 from '../assets/DC1.png';
-import hero2 from '../assets/Weather.png';
-import hero3 from '../assets/Unnatii1.png';
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowDown,
+  ArrowRight,
+  Braces,
+  Code2,
+  Database,
+  Download,
+  Github,
+  Linkedin,
+  ServerCog,
+  Sparkles,
+} from "lucide-react";
+import CV from "../assets/Avinash_Sharma_Full_Stack_MERN_Developer_Resume.pdf";
 
-const Herop = () => {
-  const [activeSlide, setActiveSlide] = useState(1);
-  const [isHacked, setIsHacked] = useState(false);
+const tech = ["React.js", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "Tailwind CSS"];
 
-  const slides = [
-    {
-      id: 1,
-      title: 'Digital Commerce',
-      description: 'E-commerce platform with modern design',
-      image: hero1
-    },
-    {
-      id: 2,
-      title: 'Weather App',
-      description: 'Real-time weather forecasting',
-      image: hero2
-    },
-    {
-      id: 3,
-      title: 'Unnatii Project',
-      description: 'Innovative solutions for growth',
-      image: hero3
-    }
-  ];
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsHacked(true);
-    }, 1000);
-  }, []);
-
-  const goToNext = () => {
-    setActiveSlide(prev => (prev >= slides.length ? 1 : prev + 1));
-  };
-
-  const goToSlide = (number) => {
-    setActiveSlide(number);
-  };
-
+const Herop = ({ name, role, description }) => {
   return (
-    <div className="relative h-screen w-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-      {slides.map((slide) => (
-        <div
-          key={slide.id}
-          className={`absolute inset-0 transition-transform duration-[600ms] ease-in-out pointer-events-none ${
-            activeSlide === slide.id 
-              ? 'translate-x-0 z-[2]' 
-              : 'translate-x-0 z-0'
-          }`}
-          style={{ transitionDelay: activeSlide === slide.id ? '0ms' : '600ms' }}
-        >
-          {/* Blurred Background Layer */}
-          <div
-            className={`absolute w-full h-full overflow-hidden transition-all ${
-              activeSlide === slide.id
-                ? 'translate-x-0 opacity-100'
-                : isHacked
-                ? 'translate-x-full opacity-100'
-                : 'translate-x-full opacity-0'
-            }`}
-            style={{
-              transitionDuration: activeSlide === slide.id ? '450ms' : '900ms',
-              transitionTimingFunction: 'cubic-bezier(0.785, 0.135, 0.150, 0.860)',
-              transitionDelay: activeSlide === slide.id ? '450ms' : '0ms',
-              transformOrigin: activeSlide === slide.id ? '100% 50%' : '0% 50%'
-            }}
-          >
-            <div
-              className="absolute w-full h-full bg-cover bg-center transition-all duration-[450ms]"
-              style={{
-                backgroundImage: `url(${slide.image})`,
-                filter: activeSlide === slide.id 
-                  ? 'blur(8px) brightness(0.7)' 
-                  : 'blur(0)',
-                transitionDelay: activeSlide === slide.id ? '900ms' : '0ms'
-              }}
-            />
-          </div>
+    <section id="home" className="relative isolate min-h-screen overflow-hidden bg-[#050914] px-5 pb-16 pt-28 text-white sm:px-8 lg:px-12 lg:pt-32">
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_14%_18%,rgba(16,185,129,.16),transparent_28%),radial-gradient(circle_at_84%_20%,rgba(56,189,248,.14),transparent_30%),radial-gradient(circle_at_50%_90%,rgba(99,102,241,.10),transparent_30%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.05] [background-image:linear-gradient(rgba(255,255,255,.22)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.22)_1px,transparent_1px)] [background-size:54px_54px]" />
 
-          {/* Main Content Layer */}
-          <div
-            className={`w-full h-full absolute inset-0 transition-all duration-[450ms] ${
-              activeSlide === slide.id ? 'pointer-events-auto' : ''
-            }`}
-            style={{
-              transform: activeSlide === slide.id 
-                ? 'scale(0.85) translateY(0)' 
-                : 'scale(0.75) translateY(0)',
-              opacity: activeSlide === slide.id ? 1 : 0,
-              boxShadow: activeSlide === slide.id 
-                ? '0 8px 32px rgba(0,0,0,0.3)' 
-                : '0 12px 12px rgba(0,0,0,0)',
-              transitionDelay: activeSlide === slide.id ? '900ms' : '0ms',
-              transitionProperty: 'transform, box-shadow, opacity'
-            }}
-          >
-            <div className="w-full h-full flex items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16">
-              <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                {/* Text Content */}
-                <div
-                  className="text-white space-y-4 sm:space-y-6 text-center lg:text-left order-2 lg:order-1"
-                  style={{
-                    fontFamily: "'Heebo', sans-serif",
-                    opacity: activeSlide === slide.id ? 1 : 0,
-                    transitionDelay: activeSlide === slide.id ? '1350ms' : '0ms',
-                    transition: 'opacity 450ms'
-                  }}
-                >
-                  <h1 
-                    className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight pointer-events-none"
-                    style={{ 
-                      textShadow: '0 4px 12px rgba(0,0,0,0.3)',
-                      lineHeight: '1.1'
-                    }}
-                  >
-                    {slide.title}
-                  </h1>
-                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 font-light">
-                    {slide.description}
-                  </p>
-                  
-                  <div className="flex gap-4 justify-center lg:justify-start pt-4">
-                    <button
-                      onClick={goToNext}
-                      className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-900 rounded-full font-semibold text-sm sm:text-base hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
-                    >
-                      View Project
-                    </button>
-                    <button
-                      onClick={goToNext}
-                      className="cursor-pointer text-sm sm:text-base tracking-wider font-thin relative group inline-flex items-center px-4 py-3 text-white"
-                    >
-                      <span className="relative z-10">Next</span>
-                      <span
-                        className="block w-8 sm:w-12 bg-white h-[1px] absolute top-1/2 right-[-40px] sm:right-[-50px] transform -translate-y-1/2 origin-left transition-transform duration-[600ms] ease-in-out group-hover:scale-x-150"
-                      />
-                      <span
-                        className="block w-2 h-2 border-t border-r border-white absolute top-1/2 right-[-50px] sm:right-[-62px] transform -translate-y-1/2 rotate-45 transition-transform duration-[600ms] ease-in-out group-hover:translate-x-3"
-                      />
-                    </button>
-                  </div>
-                </div>
+      <div className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-7xl items-center">
+        <div className="grid w-full items-center gap-12 lg:grid-cols-[1.18fr_.82fr] lg:gap-16">
+          <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, ease: [0.16,1,.3,1] }}>
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/[0.06] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">
+              <Sparkles size={14} />
+              Full Stack Engineer · Jaipur, India
+            </div>
 
-                {/* Image Container */}
-                <div 
-                  className="relative order-1 lg:order-2"
-                  style={{
-                    opacity: activeSlide === slide.id ? 1 : 0,
-                    transform: activeSlide === slide.id ? 'translateX(0)' : 'translateX(50px)',
-                    transitionDelay: activeSlide === slide.id ? '1200ms' : '0ms',
-                    transition: 'opacity 600ms, transform 600ms'
-                  }}
-                >
-                  <div className="relative w-full aspect-[4/3] sm:aspect-video max-w-2xl mx-auto">
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                      className="w-full h-full object-cover rounded-2xl shadow-2xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl" />
-                  </div>
-                </div>
+            <h1 className="max-w-5xl text-[clamp(3.2rem,8vw,7.7rem)] font-black leading-[.88] tracking-[-.065em]">
+              <span className="block text-white">I build</span>
+              <span className="block bg-gradient-to-r from-emerald-300 via-cyan-300 to-indigo-400 bg-clip-text text-transparent">production-ready</span>
+              <span className="block text-white">web products.</span>
+            </h1>
+
+            <div className="mt-8 max-w-3xl border-l border-emerald-300/35 pl-5 sm:pl-7">
+              <p className="text-sm font-bold uppercase tracking-[.16em] text-slate-300">{name}</p>
+              <p className="mt-2 text-lg font-semibold text-slate-200 sm:text-xl">{role}</p>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">{description}</p>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {tech.map((item, index) => (
+                <motion.span key={item} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .35 + index * .06 }} className="rounded-full border border-white/10 bg-white/[0.045] px-3.5 py-2 text-xs font-semibold text-slate-300 backdrop-blur-md">
+                  {item}
+                </motion.span>
+              ))}
+            </div>
+
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <motion.a whileHover={{ y: -2 }} whileTap={{ scale: .98 }} href="#projects" className="group inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-400 px-6 text-sm font-black text-[#03231d] shadow-[0_18px_50px_rgba(16,185,129,.20)]">
+                View Featured Work <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
+              </motion.a>
+              <motion.a whileHover={{ y: -2 }} whileTap={{ scale: .98 }} href={CV} download="Avinash_Sharma_Full_Stack_MERN_Developer_Resume.pdf" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/12 bg-white/[0.045] px-6 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/[0.08]">
+                <Download size={17} /> Download Resume
+              </motion.a>
+              <div className="flex gap-2">
+                <a href="https://github.com/Avinash07x" target="_blank" rel="noreferrer" aria-label="GitHub" className="grid h-14 w-14 place-items-center rounded-2xl border border-white/10 bg-white/[0.045] text-slate-300 transition hover:border-cyan-300/30 hover:text-cyan-300"><Github size={19}/></a>
+                <a href="https://www.linkedin.com/in/avinash-sharma-3104a1364/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-14 w-14 place-items-center rounded-2xl border border-white/10 bg-white/[0.045] text-slate-300 transition hover:border-cyan-300/30 hover:text-cyan-300"><Linkedin size={19}/></a>
               </div>
             </div>
-          </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, scale: .94, x: 26 }} animate={{ opacity: 1, scale: 1, x: 0 }} transition={{ duration: .85, delay: .12, ease: [0.16,1,.3,1] }} className="relative mx-auto w-full max-w-xl">
+            <div className="absolute -inset-8 rounded-[3rem] bg-gradient-to-br from-emerald-400/10 via-cyan-400/5 to-indigo-500/10 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#09111f]/88 p-5 shadow-[0_35px_100px_rgba(0,0,0,.42)] backdrop-blur-2xl sm:p-7">
+              <div className="flex items-center justify-between border-b border-white/8 pb-5">
+                <div className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-rose-400"/><span className="h-2.5 w-2.5 rounded-full bg-amber-300"/><span className="h-2.5 w-2.5 rounded-full bg-emerald-400"/></div>
+                <span className="rounded-full border border-emerald-300/15 bg-emerald-300/[0.05] px-3 py-1 text-[10px] font-bold uppercase tracking-[.15em] text-emerald-300">Building end-to-end</span>
+              </div>
+
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                {[{icon:Code2,label:"Frontend",value:"React + Vite"},{icon:ServerCog,label:"Backend",value:"Node + Express"},{icon:Database,label:"Data",value:"PostgreSQL + MongoDB"},{icon:Braces,label:"Architecture",value:"REST · RBAC · SaaS"}].map(({icon:Icon,label,value},index)=>(
+                  <motion.div key={label} whileHover={{ y:-4 }} className="rounded-2xl border border-white/8 bg-white/[0.035] p-4 transition hover:border-cyan-300/20">
+                    <Icon size={20} className={index % 2 ? "text-cyan-300" : "text-emerald-300"}/>
+                    <p className="mt-5 text-xs text-slate-500">{label}</p>
+                    <p className="mt-1 text-sm font-bold text-slate-200">{value}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-white/8 bg-[#050914]/70 p-5 font-mono text-[12px] leading-6 text-slate-400">
+                <p><span className="text-fuchsia-300">const</span> <span className="text-cyan-300">developer</span> = {'{'}</p>
+                <p className="pl-5">focus: <span className="text-amber-300">"scalable products"</span>,</p>
+                <p className="pl-5">strengths: [<span className="text-emerald-300">"UI/UX"</span>, <span className="text-emerald-300">"APIs"</span>, <span className="text-emerald-300">"Databases"</span>],</p>
+                <p className="pl-5">shipping: <span className="text-amber-300">true</span></p>
+                <p>{'}'};</p>
+              </div>
+
+              <div className="mt-5 grid grid-cols-3 divide-x divide-white/8 rounded-2xl border border-white/8 bg-white/[0.035] py-4 text-center">
+                <div><p className="text-xl font-black text-white">10+</p><p className="mt-1 text-[10px] uppercase tracking-wider text-slate-500">Projects</p></div>
+                <div><p className="text-xl font-black text-white">2</p><p className="mt-1 text-[10px] uppercase tracking-wider text-slate-500">Roles</p></div>
+                <div><p className="text-xl font-black text-white">Full Stack</p><p className="mt-1 text-[10px] uppercase tracking-wider text-slate-500">MERN+</p></div>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      ))}
-
-      {/* Navigation Dots */}
-      <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 flex gap-2 sm:gap-3 z-20">
-        {slides.map((slide) => (
-          <button
-            key={slide.id}
-            onClick={() => goToSlide(slide.id)}
-            className={`transition-all duration-300 rounded-full ${
-              activeSlide === slide.id 
-                ? 'w-8 sm:w-10 h-2 sm:h-2.5 bg-white' 
-                : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-white/50 hover:bg-white/70'
-            }`}
-            aria-label={`Go to slide ${slide.id}`}
-          />
-        ))}
       </div>
 
-      {/* Slide Counter */}
-      <div className="absolute top-6 sm:top-8 right-6 sm:right-8 text-white/80 text-sm sm:text-base font-light z-20">
-        <span className="text-xl sm:text-2xl font-bold">{activeSlide}</span>
-        <span className="mx-1">/</span>
-        <span>{slides.length}</span>
-      </div>
-    </div>
+      <a href="#about" aria-label="Scroll to about" className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 rounded-full border border-white/10 bg-white/[0.04] p-3 text-slate-400 transition hover:text-white md:block">
+        <motion.span animate={{ y:[-2,4,-2] }} transition={{ duration:1.7, repeat:Infinity }} className="block"><ArrowDown size={18}/></motion.span>
+      </a>
+    </section>
   );
 };
 

@@ -7,18 +7,12 @@ import Projects from "./Projects";
 import Contact from "./Contact";
 import Faqs from "../components/Faqs";
 
-
-const Homepage = () => {
+export default function Homepage() {
   return (
-    <div>
+    <main className="overflow-x-clip bg-[#F5F5F5]">
       <Home
         name="Avinash Sharma"
-        role="Frontend / Full Stack Developer (Fresher)"
-        description="I am a Full Stack Developer with a strong focus on frontend development,
-          and hands-on experience in backend technologies. I build modern,
-          responsive, and scalable web applications with an emphasis on clean UI,
-          good UX, and seamless user experiences.
-        "
+        description="Full Stack Developer with hands-on experience building production-grade web applications, SaaS platforms, ERP systems, CMS solutions and Windows desktop applications using React.js, Node.js, Express.js, PostgreSQL and MongoDB."
       />
       <About />
       <Skills />
@@ -26,8 +20,6 @@ const Homepage = () => {
       <Projects />
       <Contact />
       <Faqs />
-    </div>
+    </main>
   );
-};
-
-export default Homepage;
+}

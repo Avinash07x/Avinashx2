@@ -1,3 +1,355 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --brand-black: #303030;
+  --brand-deep: #111111;
+  --brand-bg: #f5f5f5;
+  --brand-white: #ffffff;
+  --brand-blue: #45b7ff;
+  --brand-blue-light: #7ccbff;
+  --brand-blue-dark: #168bd2;
+  --brand-muted: #6b7280;
+  --brand-border: #e5e7eb;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--brand-bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--brand-bg);
+  color: var(--brand-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+::selection {
+  background: rgba(69, 183, 255, 0.22);
+  color: #111111;
+}
+
+section[id] {
+  scroll-margin-top: 78px;
+}
+
+/* ==============================
+   NAVBAR
+================================ */
+.portfolio-nav {
+  background: rgba(245, 245, 245, 0.7);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.055);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  transition:
+    background 280ms ease,
+    box-shadow 280ms ease,
+    border-color 280ms ease;
+}
+
+.portfolio-nav.is-scrolled {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(17, 17, 17, 0.08);
+  box-shadow: 0 12px 35px rgba(17, 17, 17, 0.07);
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
+}
+
+.nav-tooltip {
+  transform: translateY(-4px);
+}
+
+.nav-tooltip::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  transform: translateX(-50%) rotate(45deg);
+  background: #111111;
+}
+
+/* ==============================
+   HERO
+================================ */
+.hero-grid {
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(48, 48, 48, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48, 48, 48, 0.045) 1px, transparent 1px);
+  background-size: 62px 62px;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 10%,
+    black 78%,
+    transparent
+  );
+}
+
+.hero-blue-glow {
+  background: radial-gradient(
+    circle,
+    rgba(69, 183, 255, 0.18) 0%,
+    rgba(69, 183, 255, 0.07) 42%,
+    transparent 72%
+  );
+  filter: blur(18px);
+}
+
+.hero-black-glow {
+  background: radial-gradient(
+    circle,
+    rgba(48, 48, 48, 0.08) 0%,
+    transparent 70%
+  );
+  filter: blur(28px);
+}
+
+.role-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.1rem;
+  background: #45b7ff;
+  animation: caretBlink 1s steps(1) infinite;
+}
+
+.scroll-arrow {
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+/* ==============================
+   SKILLS
+================================ */
+.skills-blue-glow {
+  background: radial-gradient(
+    circle,
+    rgba(69, 183, 255, 0.12),
+    transparent 68%
+  );
+  filter: blur(40px);
+}
+
+/* ==============================
+   PROJECTS
+================================ */
+.project-feature-card {
+  isolation: isolate;
+}
+
+.project-card-spotlight {
+  background:
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(69, 183, 255, 0.18),
+      transparent 32%
+    ),
+    linear-gradient(
+      130deg,
+      transparent,
+      rgba(255, 255, 255, 0.025),
+      transparent
+    );
+}
+
+/* ==============================
+   CONTACT
+================================ */
+.contact-social-circle {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  border-radius: 999px;
+  transition:
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 260ms ease,
+    background 260ms ease;
+}
+
+.social-email {
+  color: white;
+  background: linear-gradient(135deg, #4f7cff, #8b37ed);
+  box-shadow: 0 12px 28px rgba(79, 124, 255, 0.18);
+}
+
+.social-linkedin {
+  color: white;
+  background: #3478e5;
+  box-shadow: 0 12px 28px rgba(52, 120, 229, 0.18);
+}
+
+.social-github {
+  color: white;
+  background: #303947;
+}
+
+.social-whatsapp {
+  color: #07150c;
+  background: #25d366;
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.16);
+}
+
+/* ==============================
+   FOOTER
+================================ */
+.footer-social {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
+  background: rgba(255, 255, 255, 0.035);
+  transition:
+    transform 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease,
+    background 250ms ease;
+}
+
+.footer-social:hover {
+  transform: translateY(-3px);
+  color: #7ccbff;
+  border-color: rgba(69, 183, 255, 0.35);
+  background: rgba(69, 183, 255, 0.07);
+}
+
+/* ==============================
+   GLOBAL SCROLL REVEAL
+================================ */
+.portfolio-scroll-section {
+  position: relative;
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 620ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.portfolio-scroll-section.portfolio-scroll-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+#home.portfolio-scroll-section {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==============================
+   ACCESSIBILITY + BASE MOTION
+================================ */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(69, 183, 255, 0.95);
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+}
+
+@keyframes caretBlink {
+  0%,
+  48% {
+    opacity: 1;
+  }
+  49%,
+  100% {
+    opacity: 0.16;
+  }
+}
+
+@keyframes scrollBounce {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 6px, 0);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-social-circle:hover {
+    transform: translate3d(0, -4px, 0) scale(1.04);
+  }
+}
+
+@media (max-width: 767px) {
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+
+  .hero-grid {
+    background-size: 42px 42px;
+    opacity: 0.2;
+  }
+
+  .portfolio-scroll-section {
+    transform: translate3d(0, 12px, 0);
+    transition-duration: 450ms;
+  }
+
+  .contact-social-circle {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .portfolio-scroll-section,
+  .portfolio-scroll-section.portfolio-scroll-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
