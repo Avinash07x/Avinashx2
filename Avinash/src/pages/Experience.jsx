@@ -11,7 +11,7 @@ const experienceData = [
   {
     role: "Full Stack Engineer",
     company: "Uddan Promotions Pvt. Ltd.",
-    period: "Apr 2026 – Present",
+    period: "Present",
     location: "Jaipur, Rajasthan, India",
     current: true,
     points: [
