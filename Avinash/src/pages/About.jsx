@@ -9,7 +9,7 @@ import {
   Layers3,
   ServerCog,
 } from "lucide-react";
-import aboutImage from "../assets/Aboutv.png";
+import aboutImage from "../assets/Aboutv1.gif";
 
 const strengths = [
   {
