@@ -45,7 +45,7 @@ export default function About() {
 
   return (
     <section id="about" className="bg-white px-4 py-20 text-[#303030] sm:px-6 lg:px-8 lg:py-28">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto">
         <div className="grid items-start gap-12 lg:grid-cols-[.88fr_1.12fr] lg:gap-16">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, x: -24 }}

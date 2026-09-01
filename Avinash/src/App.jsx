@@ -14,7 +14,6 @@ import ScrollProgress from "./components/ScrollProgress";
 const App = () => {
   return (
     <BrowserRouter>
-      <ScrollProgress />
       <ScrollEffects />
       <Navbar />
 

@@ -42,13 +42,13 @@ export default function Home({ name, description }) {
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-[#F5F5F5] px-4 pb-10 pt-24 text-[#303030] sm:px-6 lg:px-8"
+      className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-white px-4 pb-10 pt-24 text-[#303030] sm:px-6 lg:px-8"
     >
       <div className="hero-grid pointer-events-none absolute inset-0" />
       <div className="hero-blue-glow pointer-events-none absolute -right-32 -top-24 h-[34rem] w-[34rem] rounded-full" />
       <div className="hero-black-glow pointer-events-none absolute -bottom-48 -left-44 h-[34rem] w-[34rem] rounded-full" />
 
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
+      <div className="relative mx-auto grid w-full items-center gap-10 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
         <motion.div
           initial={reduceMotion ? false : "hidden"}
           animate="show"
@@ -67,7 +67,7 @@ export default function Home({ name, description }) {
 
           <motion.h1
             variants={{ hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0 } }}
-            className="max-w-4xl text-[clamp(3.2rem,7.8vw,7.7rem)] font-black leading-[.88] tracking-[-.065em]"
+            className="max-w-4xl text-[clamp(1.2rem,4.8vw,4.7rem)] font-black leading-[.88] tracking-[-.065em]"
           >
             <span className="block">Building</span>
             <span className="block text-[#45B7FF]">production-ready</span>
@@ -80,9 +80,8 @@ export default function Home({ name, description }) {
           >
             <span className="h-px w-9 bg-[#45B7FF]" />
             <span className="text-base font-black text-[#303030] sm:text-lg">
-              {reduceMotion ? roles[0] : roles[roleIndex]}
+              {reduceMotion ? roles[0] : roles[roleIndex]} <span className="role-caret" aria-hidden="true" />
             </span>
-            <span className="role-caret" aria-hidden="true" />
           </motion.div>
 
           <motion.p
@@ -210,7 +209,6 @@ export default function Home({ name, description }) {
         onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" })}
         className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-[10px] font-black uppercase tracking-[.18em] text-[#9CA3AF] sm:flex"
       >
-        Scroll
         <ArrowDown size={16} className="scroll-arrow" />
       </button>
     </section>

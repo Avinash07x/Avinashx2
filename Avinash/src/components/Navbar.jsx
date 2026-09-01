@@ -92,7 +92,7 @@ export default function Navbar() {
           scrolled ? "is-scrolled" : ""
         }`}
       >
-        <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-[72px] items-center justify-between px-4 sm:px-6 lg:px-8">
           <HashLink
             to="/#home"
             onClick={(e) => go(e, "home")}
@@ -106,16 +106,16 @@ export default function Navbar() {
             />
           </HashLink>
 
-          <nav className="hidden items-center gap-2 md:flex" aria-label="Main navigation">
+          <nav className="hidden items-center gap-4 md:flex" aria-label="Main navigation">
             {menuItems.map((item) => (
               <HashLink
                 key={item.id}
                 to={`/#${item.id}`}
                 onClick={(e) => go(e, item.id)}
-                className={`nav-icon group relative grid h-11 w-11 place-items-center rounded-full border transition ${
+                className={`nav-icon group relative grid h-11 w-11 place-items-center transition ${
                   active === item.id
-                    ? "border-[#45B7FF]/45 bg-[#45B7FF]/10 shadow-[0_0_0_4px_rgba(69,183,255,.05)]"
-                    : "border-transparent hover:border-black/10 hover:bg-black/[0.035]"
+                    ? "border-[#45B7FF]/45"
+                    : "border-transparent"
                 }`}
                 aria-label={item.name}
                 aria-current={active === item.id ? "page" : undefined}
