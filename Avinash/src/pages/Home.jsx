@@ -114,7 +114,7 @@ export default function Home({ name, description }) {
             <button
               type="button"
               onClick={goProjects}
-              className="group inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-[#303030] px-6 text-sm font-black text-white transition duration-300 hover:-translate-y-1 hover:bg-[#45B7FF] hover:shadow-[0_15px_38px_rgba(69,183,255,.25)]"
+              className="group inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-[#303030] px-7 text-sm font-black text-white glow-hover hover:bg-[#45B7FF]"
             >
               View Featured Work
               <ArrowRight size={17} className="transition group-hover:translate-x-1" />
@@ -123,7 +123,7 @@ export default function Home({ name, description }) {
               href={CV}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-[#303030] bg-transparent px-6 text-sm font-black text-[#303030] transition duration-300 hover:-translate-y-1 hover:border-[#45B7FF] hover:text-[#168BD2]"
+              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-[#303030] bg-white px-7 text-sm font-black text-[#303030] glow-hover hover:border-[#45B7FF] hover:text-[#168BD2]"
             >
               <Download size={17} /> View Resume
             </a>
