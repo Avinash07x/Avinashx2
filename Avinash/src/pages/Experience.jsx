@@ -1,12 +1,18 @@
-import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
+  Award,
   BadgeCheck,
   BriefcaseBusiness,
   CalendarDays,
+  Eye,
   MapPin,
   Sparkles,
+  X,
 } from "lucide-react";
+
+import internshipCert from "../assets/Avinash Internship Certificate.png";
+import appreciationCert from "../assets/Appreciation Certificate.png";
 
 const experienceData = [
   {
@@ -96,6 +102,22 @@ const pointVariants = {
 
 export default function Experience() {
   const reduceMotion = useReducedMotion();
+  const [activeCert, setActiveCert] = useState(null);
+
+  const certificates = [
+    {
+      title: "Internship Certificate",
+      issuer: "Site Worx Infotech",
+      img: internshipCert,
+      description: "Full Stack Developer Internship completion & excellence certificate.",
+    },
+    {
+      title: "Appreciation Certificate",
+      issuer: "Uddan Promotions / Site Worx",
+      img: appreciationCert,
+      description: "Recognition for outstanding engineering contribution and project leadership.",
+    },
+  ];
 
   return (
     <section
@@ -718,7 +740,115 @@ export default function Experience() {
             ))}
           </div>
         </motion.div>
+
+        {/* Certificates Section */}
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6 }}
+          className="mt-20 border-t border-[#E5E7EB] pt-16"
+        >
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <div>
+              <div className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-[#168BD2]">
+                <Award size={15} />
+                Verified Credentials
+              </div>
+              <h3 className="mt-2 text-2xl font-black sm:text-3xl">
+                Certificates & Recognition
+              </h3>
+            </div>
+            <p className="max-w-md text-xs font-semibold text-[#6B7280] sm:text-right">
+              Official certificates validating professional internship performance and developer contributions.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            {certificates.map((cert) => (
+              <motion.div
+                key={cert.title}
+                whileHover={reduceMotion ? undefined : { y: -6 }}
+                className="group relative flex flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-white p-4 shadow-[0_12px_35px_rgba(0,0,0,.04)] transition duration-300 hover:border-[#45B7FF]/40 hover:shadow-[0_20px_50px_rgba(69,183,255,.12)]"
+              >
+                <div className="relative aspect-[1.41/1] overflow-hidden rounded-[18px] bg-[#F5F5F5]">
+                  <img
+                    src={cert.img}
+                    alt={cert.title}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-center justify-center">
+                    <button
+                      type="button"
+                      onClick={() => setActiveCert(cert)}
+                      className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-black text-[#303030] shadow-lg transition hover:bg-[#45B7FF] hover:text-white"
+                    >
+                      <Eye size={14} /> Preview Certificate
+                    </button>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between">
+                  <div>
+                    <h4 className="font-black text-lg text-[#303030]">{cert.title}</h4>
+                    <p className="text-xs font-bold text-[#168BD2]">{cert.issuer}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setActiveCert(cert)}
+                    className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-[#F9FAFB] text-[#303030] transition hover:border-[#45B7FF] hover:bg-[#45B7FF] hover:text-white"
+                    aria-label={`View ${cert.title}`}
+                  >
+                    <Eye size={16} />
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {activeCert && (
+          <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveCert(null)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative z-10 max-h-[90vh] max-w-4xl overflow-hidden rounded-[28px] bg-white p-4 shadow-2xl sm:p-6"
+            >
+              <div className="flex items-center justify-between border-b border-black/10 pb-4 mb-4">
+                <div>
+                  <h3 className="font-black text-xl text-[#303030]">{activeCert.title}</h3>
+                  <p className="text-xs font-bold text-[#168BD2]">{activeCert.issuer}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveCert(null)}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-[#F5F5F5] text-[#303030] transition hover:bg-[#303030] hover:text-white"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="max-h-[70vh] overflow-auto rounded-2xl bg-[#000]/5 p-2">
+                <img
+                  src={activeCert.img}
+                  alt={activeCert.title}
+                  className="mx-auto max-h-[65vh] rounded-xl object-contain"
+                />
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

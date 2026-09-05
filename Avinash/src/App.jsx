@@ -10,10 +10,12 @@ import Footer from "./components/Footer";
 import Homepage from "./pages/Homepage";
 import ScrollEffects from "./components/ScrollEffects";
 import ScrollProgress from "./components/ScrollProgress";
+import CurlyCursor from "./components/CurlyCursor";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <CurlyCursor />
       <ScrollEffects />
       <Navbar />
 
